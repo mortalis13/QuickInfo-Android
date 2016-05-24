@@ -1,0 +1,7 @@
+Postal Codes
+
+Paris - 75001-75020
+Berlin - 10115-14199
+Phoenix - 85018
+Los Angeles - 90002
+Anchorage - 99501

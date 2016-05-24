@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Quick Info</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_editor">Editor</string>
+    <string name="edit_button">Edit</string>
+    <string name="save_button">Save</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="personal_info_label">Personal Info</string>
+    <string name="editor_label">Editor</string>
+    
+    <string name="action_linewrap">Line Wrap</string>
+    <string name="action_add">Add</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_save">Save</string>
+    <string name="action_delete">Del</string>
+    <string name="action_import_text">Import Text</string>
+    <string name="action_exportdb">Export DB</string>
+    <string name="action_importdb">Import DB</string>
+    
+    <string name="title_activity_timetable_view">Timetable</string>
+    <string name="title_activity_note_view">Note</string>
+    <string name="hello_world">Hello world!</string>
+
+</resources>

@@ -1,0 +1,48 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    tools:context="org.mortalis.quickinfo.EditorActivity" >
+    
+    <android.support.v7.widget.Toolbar
+       android:id="@+id/my_child_toolbar"
+       android:layout_width="match_parent"
+       android:layout_height="?attr/actionBarSize"
+       android:background="@color/actionbar"
+       android:elevation="4dp"
+       android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+       app:popupTheme="@style/ActionBar.Popup.Darker" />
+       
+       <!-- app:popupTheme="@style/ThemeOverlay.AppCompat.Light" /> -->
+       
+    
+    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" >
+      <ScrollView
+          android:layout_width="fill_parent"
+          android:layout_height="fill_parent"
+          android:fillViewport="true" >
+          
+          <EditText
+              android:id="@+id/editor_text"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:background="@color/white"
+              android:gravity="top"
+              android:imeOptions="actionDone"
+              android:inputType="textCapSentences|textImeMultiLine|textMultiLine"
+              android:padding="10dp"
+              android:scrollbarAlwaysDrawVerticalTrack="true"
+              android:scrollbars="vertical"
+              android:textSize="20sp" >
+
+              <requestFocus />
+          </EditText>
+          <!-- android:background="@android:color/transparent" -->
+      </ScrollView>
+    </LinearLayout>
+
+</LinearLayout>
