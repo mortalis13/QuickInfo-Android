@@ -83,7 +83,7 @@ public class PersonalInfoFragment extends Fragment {
         String item = (String) parent.getItemAtPosition(position);
         item = item.trim();
         copyClipboard(item);
-        toast("Copied: "+item);
+        // toast("Copied: "+item);
       }
     });
         

@@ -20,6 +20,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
@@ -55,20 +56,6 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerF
 
     mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(R.id.navigation_drawer);
     mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
-    
-      
-    if (savedInstanceState != null){
-      int currentDrawerItem = -1;
-      currentDrawerItem = savedInstanceState.getInt(SELECTED_DRAWER_ITEM);
-      
-      if(currentDrawerItem != -1){
-        onNavigationDrawerItemSelected(currentDrawerItem);
-        Log.d("main", "[in] currentDrawerItem: " + currentDrawerItem);
-      }
-    }
-    else{
-      Log.d("main", "savedInstanceState == null");
-    }
   }
   
   @Override
@@ -149,6 +136,7 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerF
 
   public void exportDB(){
     Functions.exportDB();
+    toast("DB exported to: \"/sdcard/QuickInfo\"");
   }
   
   public void importDB(){
@@ -163,6 +151,15 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerF
         }
       }
     }).showDialog();
+  }
+
+
+// ------------------------------------------------ Service ------------------------------------------------
+
+  public void toast(String msg){
+    int duration = Toast.LENGTH_LONG;
+    Toast toast = Toast.makeText(this, msg, duration);
+    toast.show();
   }
 
 }
