@@ -8,3 +8,12 @@ Provides quick access to frequently used information.
 
 - DB is exported to "sdcard/QuickInfo" folder with "info" name (without extension)
 - the exported DB can be viewed and edited with any SQLite browser (like [SQLite Viewer](https://play.google.com/store/apps/details?id=com.kokufu.android.apps.sqliteviewer.free) app)
+
+
+## Changelog
+
+### 1.0.1
+
+- added toast message on export DB
+- removed toast message on copy Personal Info elements
+- removed Setting menu
