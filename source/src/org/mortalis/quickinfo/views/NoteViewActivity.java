@@ -77,8 +77,6 @@ public class NoteViewActivity extends AppCompatActivity {
   public boolean onOptionsItemSelected(MenuItem item) {
     int id = item.getItemId();
     switch(id){
-    case R.id.action_settings:
-      return true;
     case R.id.action_edit:
       editAction();
       return true;
