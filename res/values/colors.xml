@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#59af95</color>
+    
+    <color name="main_background">#fff</color>
+    <color name="menu_text_color_default">#333</color>
+    <color name="menu_text_color_disabled">#aaa</color>
+    <color name="tab_background">#eee</color>
+    
+    <color name="toolbar_background">#eee</color>
+    <color name="toolbar_button_background_default">@color/toolbar_background</color>
+    <color name="toolbar_button_background_pressed">#ddd</color>
+    
+    <color name="red">#ffff0000</color>
+    <color name="green">#ff00ff00</color>
+    <color name="blue">#ff0000ff</color>
+    <color name="yellow">#ffffff00</color>
+    <color name="white">#ffffffff</color>
+    <color name="gray">#ffdddddd</color>
+    <color name="black">#ff000000</color>
+    
+    <color name="text">#ff555555</color>
+    <color name="actionbar">#ffdddddd</color>
+    <color name="actionbar_popup_light">#ff555555</color>
+    <color name="actionbar_popup_dark">#ffeeeeee</color>
+</resources>

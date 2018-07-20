@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Quick Info</string>
+    <string name="app_version">1.0.2</string>
+    <string name="action_settings">Settings</string>
+    
+    <string name="button_ok">OK</string>
+    <string name="button_cancel">Cancel</string>
+    
+    <string name="delete_note_confirm">Delete Note?</string>
+    
+    <string name="button_tooltip_save_note">Save Note</string>
+    <string name="button_tooltip_import_text">Import Text</string>
+    <string name="button_tooltip_delete_note">Delete Note</string>
+    <string name="button_tooltip_edit_note">Edit Note</string>
+    
+    <string name="title_activity_editor">Editor</string>
+    <string name="edit_button">Edit</string>
+    <string name="save_button">Save</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="personal_info_label">Personal Info</string>
+    <string name="editor_label">Editor</string>
+    
+    <string name="action_linewrap">Line Wrap</string>
+    <string name="action_add">Add</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_save">Save</string>
+    <string name="action_delete">Del</string>
+    <string name="action_import_text">Import Text</string>
+    <string name="action_exportdb">Export DB</string>
+    <string name="action_importdb">Import DB</string>
+    
+    <string name="title_activity_timetable_view">Timetable</string>
+    <string name="title_activity_note_view">Note</string>
+    
+</resources>

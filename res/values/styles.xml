@@ -1,0 +1,48 @@
+<resources>
+
+  <!-- Base application theme. -->
+  <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+    <!-- <item name="android:windowAnimationStyle">@null</item> -->
+    <item name="android:windowAnimationStyle">@style/MyActivityAnim</item>
+    
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
+    <item name="actionBarPopupTheme">@style/PopupTheme</item>
+  </style>
+  
+  <style name="MyActivityAnim">
+      <item name="android:windowEnterAnimation">@null</item>
+      <item name="android:windowExitAnimation">@null</item>
+  </style>
+
+  
+  <!-- menu -->
+  <style name="PopupTheme" parent="@style/ThemeOverlay.AppCompat.Light">
+    <!-- menu items text color (color resource for default/disabled text) -->
+    <item name="android:colorBackground">#eee</item>
+    <item name="android:textColorSecondary">@color/menu_text_color</item>
+  </style>
+
+
+  <style name="AppTabLayout" parent="Widget.Design.TabLayout">
+    <item name="tabBackground">@drawable/tab_background</item>
+    <item name="tabTextAppearance">@style/AppTabTextAppearance</item>
+    <item name="tabIndicatorHeight">4dp</item>
+    <item name="tabSelectedTextColor">#222</item>
+    <item name="tabPaddingStart">2dp</item>
+    <item name="tabPaddingEnd">2dp</item>
+    <item name="tabGravity">fill</item>
+    <item name="tabMode">fixed</item>
+    <item name="tabMaxWidth">0dp</item>
+  </style>
+  
+  <style name="AppTabTextAppearance" parent="TextAppearance.Design.Tab">
+    <item name="android:textSize">15dp</item>
+    <item name="android:textColor">#888</item>
+    <item name="textAllCaps">true</item>
+  </style>
+
+</resources>
