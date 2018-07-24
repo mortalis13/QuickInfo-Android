@@ -1,12 +1,18 @@
 
 # QuickInfo
 
+![Icon](_img/icon.png)
+
 Provides quick access to frequently used information.
 
 ## Notes
 
 - DB is exported to "sdcard/QuickInfo" folder with "info.db" name
 - the exported DB can be viewed and edited with any SQLite editor (like [SQLite Viewer](https://play.google.com/store/apps/details?id=com.kokufu.android.apps.sqliteviewer.free) app)
+
+## Download
+
+- [**releases**](https://github.com/mortalis13/QuickInfo-Android/releases)
 
 
 ## Changelog
@@ -26,3 +32,9 @@ Provides quick access to frequently used information.
 - added toast message on export DB
 - removed toast message on copy Personal Info elements
 - removed Setting menu
+
+## Screenshots
+
+![Image_1](_img/quickinfo-1.png)<br>
+![Image_2](_img/quickinfo-2.png)<br>
+![Image_2](_img/quickinfo-3.png)<br>
