@@ -43,26 +43,37 @@ public class DatabaseManager {
   public static void updatePersonalInfo(String info) {
     Log.d("db", "updatePersonalInfo");
     
-    ContentValues values = new ContentValues();
-    values.put(ID_FIELD, 0);
-    values.put(INFO_TYPE_FIELD, "personal_info");
-    values.put(VALUE_FIELD, info);
-    
-    int id = (int) db.insertWithOnConflict(INFO_TABLE_NAME, null, values, SQLiteDatabase.CONFLICT_REPLACE);
-    Log.d("db", "insertWithOnConflict-res: " + id);
+    try {
+      ContentValues values = new ContentValues();
+      values.put(ID_FIELD, 0);
+      values.put(INFO_TYPE_FIELD, "personal_info");
+      values.put(VALUE_FIELD, info);
+      
+      int id = (int) db.insertWithOnConflict(INFO_TABLE_NAME, null, values, SQLiteDatabase.CONFLICT_REPLACE);
+      Log.d("db", "insertWithOnConflict-res: " + id);
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+    }
   }
   
   public static String getPersonalInfo() {
     Log.d("db", "getPersonalInfo");
     
-    String[] cols = { VALUE_FIELD };
-    Cursor cursor = db.query(INFO_TABLE_NAME, cols, "info_type='personal_info'", null, null, null, null, null);
-    
-    if (cursor != null && cursor.moveToFirst()) {
-      Log.d("db", "cursor-ok");
-      String info = cursor.getString(0);
-      cursor.close();
-      return info;
+    try {
+      String[] cols = { VALUE_FIELD };
+      Cursor cursor = db.query(INFO_TABLE_NAME, cols, "info_type='personal_info'", null, null, null, null, null);
+      
+      if (cursor != null && cursor.moveToFirst()) {
+        Log.d("db", "cursor-ok");
+        String info = cursor.getString(0);
+        cursor.close();
+        return info;
+      }
+      
+    }
+    catch (Exception e) {
+      e.printStackTrace();
     }
     
     Log.d("db", "cursor-null");
@@ -75,28 +86,39 @@ public class DatabaseManager {
   public static void updateQuicknoteInfo(String info) {
     Log.d("db", "updateQuicknoteInfo");
     
-    ContentValues values = new ContentValues();
-    // values.put(ID_FIELD, 1);
-    values.put(INFO_TYPE_FIELD, "quick_note");
-    values.put(VALUE_FIELD, info);
-    
-    int id = (int) db.insertWithOnConflict(INFO_TABLE_NAME, null, values, SQLiteDatabase.CONFLICT_REPLACE);
-    Log.d("db", "insertWithOnConflict-res: " + id);
+    try {
+      ContentValues values = new ContentValues();
+      // values.put(ID_FIELD, 1);
+      values.put(INFO_TYPE_FIELD, "quick_note");
+      values.put(VALUE_FIELD, info);
+      
+      int id = (int) db.insertWithOnConflict(INFO_TABLE_NAME, null, values, SQLiteDatabase.CONFLICT_REPLACE);
+      Log.d("db", "insertWithOnConflict-res: " + id);
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+    }
   }
   
   public static String getQuicknoteInfo() {
     Log.d("db", "getQuicknoteInfo");
     
-    String[] cols = { VALUE_FIELD };
-    String order = ID_FIELD + " DESC";
-    Cursor cursor = db.query(INFO_TABLE_NAME, cols, "info_type='quick_note'", null, null, null, order);
-    
-    if (cursor.getCount() > 0) {
-      Log.d("db", "cursor-ok");
-      cursor.moveToFirst();
-      String info = cursor.getString(0);
-      cursor.close();
-      return info;
+    try {
+      String[] cols = { VALUE_FIELD };
+      String order = ID_FIELD + " DESC";
+      Cursor cursor = db.query(INFO_TABLE_NAME, cols, "info_type='quick_note'", null, null, null, order);
+      
+      if (cursor.getCount() > 0) {
+        Log.d("db", "cursor-ok");
+        cursor.moveToFirst();
+        String info = cursor.getString(0);
+        cursor.close();
+        return info;
+      }
+      
+    }
+    catch (Exception e) {
+      e.printStackTrace();
     }
     
     Log.d("db", "cursor-null");
@@ -109,48 +131,69 @@ public class DatabaseManager {
   public static void addNoteItem(String info) {
     Log.d("db", "addNoteItem");
     
-    ContentValues values = new ContentValues();
-    values.put(INFO_TYPE_FIELD, "note");
-    values.put(VALUE_FIELD, info);
-    
-    long id = db.insert(INFO_TABLE_NAME, null, values);
+    try {
+      ContentValues values = new ContentValues();
+      values.put(INFO_TYPE_FIELD, "note");
+      values.put(VALUE_FIELD, info);
+      
+      long id = db.insert(INFO_TABLE_NAME, null, values);
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+    }
   }
   
   public static void updateNoteItem(String info, int id) {
     Log.d("db", "updateNoteItem");
     
-    ContentValues values = new ContentValues();
-    values.put(VALUE_FIELD, info);
-    int res = db.update(INFO_TABLE_NAME, values, ID_FIELD + "=" + id, null);
-    Log.d("db", "update-res: " + res);
+    try {
+      ContentValues values = new ContentValues();
+      values.put(VALUE_FIELD, info);
+      int res = db.update(INFO_TABLE_NAME, values, ID_FIELD + "=" + id, null);
+      Log.d("db", "update-res: " + res);
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+    }
   }
   
   public static void deleteNoteItem(int id) {
     Log.d("db", "deleteNoteItem");
     
-    int res = db.delete(INFO_TABLE_NAME, ID_FIELD + "=" + id, null);
-    Log.d("db", "delete-res: " + res);
+    try {
+      int res = db.delete(INFO_TABLE_NAME, ID_FIELD + "=" + id, null);
+      Log.d("db", "delete-res: " + res);
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+    }
   }
   
   public static List<NoteModel> getNotes() {
     Log.d("db", "getNotes");
+    
     List<NoteModel> res = new ArrayList<NoteModel>();
     
-    String[] cols = { ID_FIELD, VALUE_FIELD };
-    String order = VALUE_FIELD + " COLLATE NOCASE ASC";
-    Cursor cursor = db.query(INFO_TABLE_NAME, cols, "info_type='note'", null, null, null, order);
-    
-    if (cursor.getCount() > 0) {
-      for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
-        int id = cursor.getInt(0);
-        String info = cursor.getString(1);
-        info = info.split("\n")[0];
-        
-        NoteModel item = new NoteModel(id, info);
-        res.add(item);
-      }
+    try {
+      String[] cols = { ID_FIELD, VALUE_FIELD };
+      String order = VALUE_FIELD + " COLLATE NOCASE ASC";
+      Cursor cursor = db.query(INFO_TABLE_NAME, cols, "info_type='note'", null, null, null, order);
       
-      cursor.close();
+      if (cursor.getCount() > 0) {
+        for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+          int id = cursor.getInt(0);
+          String info = cursor.getString(1);
+          info = info.split("\n")[0];
+          
+          NoteModel item = new NoteModel(id, info);
+          res.add(item);
+        }
+        
+        cursor.close();
+      }
+    }
+    catch (Exception e) {
+      e.printStackTrace();
     }
     
     return res;
@@ -159,14 +202,20 @@ public class DatabaseManager {
   public static String getNote(int id) {
     Log.d("db", "getNote");
     
-    String[] cols = { VALUE_FIELD };
-    Cursor cursor = db.query(INFO_TABLE_NAME, cols, "info_type='note' AND " + ID_FIELD + "=" + id, null, null, null, null, null);
-    
-    if (cursor.getCount() > 0) {
-      cursor.moveToFirst();
-      String info = cursor.getString(0);
-      cursor.close();
-      return info;
+    try {
+      String[] cols = { VALUE_FIELD };
+      Cursor cursor = db.query(INFO_TABLE_NAME, cols, "info_type='note' AND " + ID_FIELD + "=" + id, null, null, null, null, null);
+      
+      if (cursor.getCount() > 0) {
+        cursor.moveToFirst();
+        String info = cursor.getString(0);
+        cursor.close();
+        return info;
+      }
+      
+    }
+    catch (Exception e) {
+      e.printStackTrace();
     }
     
     return null;
@@ -174,13 +223,7 @@ public class DatabaseManager {
   
   
   private static class DatabaseHelper extends SQLiteOpenHelper {
-    private static final String INFO_TABLE_CREATE = 
-      "CREATE TABLE " + INFO_TABLE_NAME + " (" + 
-        ID_FIELD + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " + 
-        INFO_TYPE_FIELD + " TEXT," + 
-        VALUE_FIELD + " TEXT," + 
-        IS_ACTIVE_FIELD + " INTEGER" + 
-      ");";
+    private static final String INFO_TABLE_CREATE = "CREATE TABLE " + INFO_TABLE_NAME + " (" + ID_FIELD + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " + INFO_TYPE_FIELD + " TEXT," + VALUE_FIELD + " TEXT," + IS_ACTIVE_FIELD + " INTEGER" + ");";
     
     
     public DatabaseHelper(Context context) {
@@ -198,5 +241,5 @@ public class DatabaseManager {
       Log.d("db", "onUpdate");
     }
   }
-
+  
 }

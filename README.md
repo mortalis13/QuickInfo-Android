@@ -11,6 +11,10 @@ Provides quick access to frequently used information.
 
 ## Changelog
 
+### 1.0.3
+
+- exception handling
+
 ### 1.0.2
 
 - redesigned interface to tab navigation
