@@ -35,6 +35,6 @@ Provides quick access to frequently used information.
 
 ## Screenshots
 
-![Image_1](_img/quickinfo-1.png)<br>
-![Image_2](_img/quickinfo-2.png)<br>
-![Image_2](_img/quickinfo-3.png)<br>
+![Image_1](_img/quickinfo-1_.png)<br><br>
+![Image_2](_img/quickinfo-2_.png)<br><br>
+![Image_2](_img/quickinfo-3_.png)<br>
