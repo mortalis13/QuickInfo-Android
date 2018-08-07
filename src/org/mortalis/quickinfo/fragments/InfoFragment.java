@@ -20,7 +20,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 public class InfoFragment extends PageFragment {
@@ -30,12 +29,12 @@ public class InfoFragment extends PageFragment {
   private Context context;
   private Activity activity;
   
-  TextView tvContent;
-  ListView lvItems;
+  private TextView tvContent;
+  private ListView lvItems;
   
-  View rootView;
-
-  boolean infoUpdated = false;
+  private View rootView;
+  
+  private boolean infoUpdated = false;
   
   
   public static InfoFragment newInstance(Context context) {
@@ -46,7 +45,7 @@ public class InfoFragment extends PageFragment {
     return fragment;
   }
   
-
+  
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -67,10 +66,10 @@ public class InfoFragment extends PageFragment {
         String item = (String) parent.getItemAtPosition(position);
         item = item.trim();
         copyClipboard(item);
-        Fun.toast(context, "Copied: "+item);
+        Fun.toast(context, "Copied: " + item);
       }
     });
-        
+    
     return rootView;
   }
   
@@ -91,7 +90,7 @@ public class InfoFragment extends PageFragment {
     this.context = activity;
     this.activity = activity;
   }
-
+  
   @Override
   public void onAttach(Context context) {
     super.onAttach(context);
@@ -108,7 +107,7 @@ public class InfoFragment extends PageFragment {
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     int id = item.getItemId();
-    switch(id){
+    switch (id) {
     case R.id.action_edit:
       editAction();
       return true;
@@ -121,14 +120,14 @@ public class InfoFragment extends PageFragment {
   
   @Override
   public void loadData() {
-    if(infoUpdated) return;
+    if (infoUpdated) return;
     
     String info = DatabaseManager.getPersonalInfo();
     
-    if(info != null){
+    if (info != null) {
       loadInfo(info);
     }
-    else{
+    else {
       Fun.loge("info null");
     }
   }
@@ -157,11 +156,11 @@ public class InfoFragment extends PageFragment {
 // ------------------------------------------------ Service ------------------------------------------------
   
   @SuppressWarnings("deprecation")
-  public void copyClipboard(String text){
-    if(android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.HONEYCOMB) {
+  public void copyClipboard(String text) {
+    if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.HONEYCOMB) {
       android.text.ClipboardManager clipboard = (android.text.ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
       clipboard.setText(text);
-    } 
+    }
     else {
       android.content.ClipboardManager clipboard = (android.content.ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
       android.content.ClipData clip = android.content.ClipData.newPlainText("Copied Text", text);

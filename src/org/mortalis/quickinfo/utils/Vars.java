@@ -16,5 +16,19 @@ public class Vars {
   // ---
   
   public static final String FRAGMENT_TAG_ARG = "tag";
+  public static final String DATABASE_NAME = "info.db";
+  
+  public static final String EXTRA_EDITOR_TYPE = "editor_type";
+  public static final String EXTRA_CONTENT = "content";
+  public static final String EXTRA_ID = "id";
+  
+  public static final String PROP_EDITOR_TYPE_INFO = "personal_info";
+  public static final String PROP_EDITOR_TYPE_QUICK_NOTE = "quick_note";
+  public static final String PROP_EDITOR_TYPE_NOTE_EDIT = "note_edit";
+  public static final String PROP_EDITOR_TYPE_NOTE_ADD = "note_add";
+  
+  public static final String TAB_TITLE_INFO = "Info";
+  public static final String TAB_TITLE_NOTES = "Notes";
+  public static final String TAB_TITLE_QUICK_NOTE = "Quick Note";
   
 }

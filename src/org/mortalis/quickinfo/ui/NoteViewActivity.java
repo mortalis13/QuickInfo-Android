@@ -3,6 +3,7 @@ package org.mortalis.quickinfo.ui;
 import org.mortalis.quickinfo.DatabaseManager;
 import org.mortalis.quickinfo.R;
 import org.mortalis.quickinfo.utils.Fun;
+import org.mortalis.quickinfo.utils.Vars;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -24,17 +25,18 @@ public class NoteViewActivity extends AppCompatActivity {
   private ImageButton bDelete;
   private ImageButton bEdit;
   
-  TextView tvContent;
-  int noteId = -1;
-  boolean infoUpdated = false;
+  private TextView tvContent;
   
-
+  private int noteId = -1;
+  private boolean infoUpdated;
+  
+  
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_note_view);
     
-    Log.d("note_view", "onCreate");
+    Fun.logd("onCreate");
     
     tvContent = findViewById(R.id.tvContent);
     
@@ -68,7 +70,7 @@ public class NoteViewActivity extends AppCompatActivity {
   
   @Override
   public void onResume() {
-    if(noteId != -1 && !infoUpdated){
+    if (noteId != -1 && !infoUpdated) {
       String info = DatabaseManager.getNote(noteId);
       loadInfo(info);
     }
@@ -76,14 +78,14 @@ public class NoteViewActivity extends AppCompatActivity {
     infoUpdated = false;
     super.onResume();
   }
-
-
+  
+  
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     // getMenuInflater().inflate(R.menu.note_view, menu);
     return true;
   }
-
+  
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     int id = item.getItemId();
@@ -102,8 +104,8 @@ public class NoteViewActivity extends AppCompatActivity {
     
     Bundle extras = getIntent().getExtras();
     if (extras != null) {
-      content = extras.getString("content");
-      noteId = extras.getInt("id");
+      content = extras.getString(Vars.EXTRA_CONTENT);
+      noteId = extras.getInt(Vars.EXTRA_ID);
     }
     
     loadInfo(content);
@@ -113,17 +115,17 @@ public class NoteViewActivity extends AppCompatActivity {
 // ------------------------------------------------ Actions ------------------------------------------------
   
   public void loadInfo(String info) {
-    Log.d("note_view", "loadInfo");
+    Fun.logd("loadInfo");
     tvContent.setText(info);
   }
   
   public void editAction() {
-    Log.d("note_view", "edit-position: " + noteId);
+    Fun.logd("edit-position: " + noteId);
     
     Intent intent = new Intent(this, EditorActivity.class);
-    String editorType = "note_edit";
-    intent.putExtra("editor_type", editorType);
-    intent.putExtra("id", noteId);
+    String editorType = Vars.PROP_EDITOR_TYPE_NOTE_EDIT;
+    intent.putExtra(Vars.EXTRA_EDITOR_TYPE, editorType);
+    intent.putExtra(Vars.EXTRA_ID, noteId);
     
     startActivity(intent);
     overridePendingTransition(0, 0);

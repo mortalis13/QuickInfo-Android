@@ -21,6 +21,4 @@ public class CustomTabLayout extends TabLayout {
     
   }
   
-  
-  
 }

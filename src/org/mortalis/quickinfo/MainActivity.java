@@ -75,12 +75,6 @@ public class MainActivity extends AppCompatActivity {
       public void onTabSelected(Tab tab) { }
       public void onTabUnselected(Tab tab) { }
     });
-    
-    tabLayout.setLayoutAnimation(null);
-    tabLayout.setLayoutAnimationListener(null);
-    
-    tabLayout.setAnimation(null);
-//    tabLayout.setStateListAnimator(null);
   }
   
   
@@ -178,11 +172,11 @@ public class MainActivity extends AppCompatActivity {
     public CharSequence getPageTitle(int position) {
       switch (position) {
       case 0:
-        return "Info";
+        return Vars.TAB_TITLE_INFO;
       case 1:
-        return "Notes";
+        return Vars.TAB_TITLE_NOTES;
       case 2:
-        return "Quick Note";
+        return Vars.TAB_TITLE_QUICK_NOTE;
       }
       
       return null;

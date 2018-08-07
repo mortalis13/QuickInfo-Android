@@ -7,6 +7,7 @@ import org.mortalis.quickinfo.R;
 import org.mortalis.quickinfo.utils.FileChooser;
 import org.mortalis.quickinfo.utils.FileChooser.FileSelectedListener;
 import org.mortalis.quickinfo.utils.Fun;
+import org.mortalis.quickinfo.utils.Vars;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -25,17 +26,18 @@ public class EditorActivity extends AppCompatActivity {
   private ImageButton bSave;
   private ImageButton bImportText;
   
-  EditText etEditorText;
-  String editor_type = null;
-  int noteId = -1;
+  private EditText etEditorText;
   
-
+  private String editor_type;
+  private int noteId = -1;
+  
+  
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_editor);
     
-    Log.d("editor", "onCreate");
+    Fun.logd("onCreate");
     
     etEditorText = findViewById(R.id.editor_text);
     
@@ -67,17 +69,17 @@ public class EditorActivity extends AppCompatActivity {
     
     loadContent();
   }
-
+  
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     // getMenuInflater().inflate(R.menu.editor, menu);
     return true;
   }
-
+  
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     int id = item.getItemId();
-    switch(id){
+    switch (id) {
     }
     return super.onOptionsItemSelected(item);
   }
@@ -94,21 +96,21 @@ public class EditorActivity extends AppCompatActivity {
   private void loadContent() {
     Bundle extras = getIntent().getExtras();
     if (extras != null) {
-      editor_type = extras.getString("editor_type");
+      editor_type = extras.getString(Vars.EXTRA_EDITOR_TYPE);
     }
     
-    Log.d("editor", "editor_type: " + editor_type);
+    Fun.logd("editor_type: " + editor_type);
     
-    if(editor_type != null){
-      if(editor_type.equals("personal_info")){
+    if (editor_type != null) {
+      if (editor_type.equals(Vars.PROP_EDITOR_TYPE_INFO)) {
         loadPersonalInfo();
       }
-      else if(editor_type.equals("quick_note")){
+      else if (editor_type.equals(Vars.PROP_EDITOR_TYPE_QUICK_NOTE)) {
         loadQuicknoteInfo();
       }
-      else if(editor_type.equals("note_edit")){
+      else if (editor_type.equals(Vars.PROP_EDITOR_TYPE_NOTE_EDIT)) {
         if (extras != null) {
-          noteId = extras.getInt("id");
+          noteId = extras.getInt(Vars.EXTRA_ID);
           loadNoteInfo(noteId);
         }
       }
@@ -117,42 +119,42 @@ public class EditorActivity extends AppCompatActivity {
   
   public void loadPersonalInfo() {
     String info = DatabaseManager.getPersonalInfo();
-    if(info != null){
+    if (info != null) {
       etEditorText.setText(info);
     }
-    else{
-      Log.d("editor", "info-null");
+    else {
+      Fun.logd("info-null");
     }
   }
-
+  
   public void loadQuicknoteInfo() {
     String info = DatabaseManager.getQuicknoteInfo();
-    if(info != null){
+    if (info != null) {
       etEditorText.setText(info);
     }
   }
-
+  
   public void loadNoteInfo(int id) {
     String info = DatabaseManager.getNote(id);
-    if(info != null){
+    if (info != null) {
       etEditorText.setText(info);
     }
   }
-    
+  
   public void saveAction() {
-    if(editor_type != null){
+    if (editor_type != null) {
       String info = etEditorText.getText().toString();
       
-      if(editor_type.equals("personal_info")){
+      if (editor_type.equals(Vars.PROP_EDITOR_TYPE_INFO)) {
         DatabaseManager.updatePersonalInfo(info);
       }
-      else if(editor_type.equals("quick_note")){
+      else if (editor_type.equals(Vars.PROP_EDITOR_TYPE_QUICK_NOTE)) {
         DatabaseManager.updateQuicknoteInfo(info);
       }
-      else if(editor_type.equals("note_add")){
+      else if (editor_type.equals(Vars.PROP_EDITOR_TYPE_NOTE_ADD)) {
         DatabaseManager.addNoteItem(info);
       }
-      else if(editor_type.equals("note_edit")){
+      else if (editor_type.equals(Vars.PROP_EDITOR_TYPE_NOTE_EDIT)) {
         DatabaseManager.updateNoteItem(info, noteId);
       }
       
@@ -160,16 +162,15 @@ public class EditorActivity extends AppCompatActivity {
       onBackPressed();
     }
   }
-    
+  
   public void importFileAction() {
     new FileChooser(this).setFileListener(new FileSelectedListener() {
       @Override
       public void fileSelected(File file) {
         String text = Fun.readFile(file);
-        if(text != null)
-          etEditorText.setText(text);
+        if (text != null) etEditorText.setText(text);
         
-        Log.d("editor", "finishReadFile");
+        Fun.logd("finishReadFile");
       }
     }).showDialog();
   }

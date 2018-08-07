@@ -34,8 +34,9 @@ public class NotesFragment extends PageFragment {
   private Context context;
   private Activity activity;
   
-  ListView lvItems;
-  boolean infoUpdated = false;
+  private ListView lvItems;
+  
+  private boolean infoUpdated = false;
   
   
   public NotesFragment() {
@@ -95,7 +96,7 @@ public class NotesFragment extends PageFragment {
     this.context = activity;
     this.activity = activity;
   }
-
+  
   @Override
   public void onAttach(Context context) {
     super.onAttach(context);
@@ -113,7 +114,7 @@ public class NotesFragment extends PageFragment {
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     int id = item.getItemId();
-    switch(id){
+    switch (id) {
     case R.id.action_add:
       addAction();
       return true;
@@ -126,7 +127,7 @@ public class NotesFragment extends PageFragment {
   
   @Override
   public void loadData() {
-    if(infoUpdated) return;
+    if (infoUpdated) return;
     
     List<NoteModel> noteModeList = DatabaseManager.getNotes();
     List<NoteListItem> notesList = new ArrayList<>();
@@ -164,5 +165,5 @@ public class NotesFragment extends PageFragment {
     startActivity(intent);
     if (activity != null) activity.overridePendingTransition(0, 0);
   }
-
+  
 }

@@ -351,7 +351,7 @@ public class Fun {
       if (!dir.exists()) dir.mkdir();
       
       if (sd.canWrite()) {
-        String currentDBPath = "//data//" + Vars.PACKAGE_NAME + "//databases//" + DatabaseManager.DATABASE_NAME;
+        String currentDBPath = "//data//" + Vars.PACKAGE_NAME + "//databases//" + Vars.DATABASE_NAME;
         
         File backupDB = new File(data, currentDBPath);
         File currentDB = dbFile;
@@ -378,8 +378,8 @@ public class Fun {
       if (!dir.exists()) dir.mkdir();
       
       if (sd.canWrite()) {
-        String currentDBPath = "//data//" + Vars.PACKAGE_NAME + "//databases//" + DatabaseManager.DATABASE_NAME;
-        String backupDBPath = "/" + Vars.PROJECT_EXTERNAL_FOLDER + "/" + DatabaseManager.DATABASE_NAME;
+        String currentDBPath = "//data//" + Vars.PACKAGE_NAME + "//databases//" + Vars.DATABASE_NAME;
+        String backupDBPath = "/" + Vars.PROJECT_EXTERNAL_FOLDER + "/" + Vars.DATABASE_NAME;
         
         File currentDB = new File(data, currentDBPath);
         File backupDB = new File(sd, backupDBPath);
