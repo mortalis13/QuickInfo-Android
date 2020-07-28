@@ -18,6 +18,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Button;
+import android.view.LayoutInflater;
+
 
 public class NoteViewActivity extends AppCompatActivity {
   
@@ -129,11 +132,16 @@ public class NoteViewActivity extends AppCompatActivity {
   }
   
   public void deleteAction() {
-    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    int layoutId = R.layout.dialog_confirm_delete;
     
-    builder.setTitle(R.string.delete_note_confirm);
-    builder.setPositiveButton(R.string.button_ok, new DialogInterface.OnClickListener() {
-      public void onClick(DialogInterface dialog, int id) {
+    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    LayoutInflater inflater = getLayoutInflater();
+    View view = inflater.inflate(layoutId, null);
+    builder.setView(view);
+    
+    Button bOk = view.findViewById(R.id.bOk);
+    bOk.setOnClickListener(new OnClickListener() {
+      public void onClick(View v) {
         Fun.logd("Deleting note");
         DatabaseManager.deleteNoteItem(noteId);
         onBackPressed();
