@@ -3,13 +3,13 @@ package org.mortalis.quickinfo;
 import java.io.File;
 import java.util.List;
 
+import org.home.file_chooser_lib.FilePickerDialog;
+
 import org.mortalis.quickinfo.components.CustomViewPager;
 import org.mortalis.quickinfo.fragments.InfoFragment;
 import org.mortalis.quickinfo.fragments.NotesFragment;
 import org.mortalis.quickinfo.fragments.PageFragment;
 import org.mortalis.quickinfo.fragments.QuickNoteFragment;
-import org.mortalis.quickinfo.utils.FileChooser;
-import org.mortalis.quickinfo.utils.FileChooser.FileSelectedListener;
 import org.mortalis.quickinfo.utils.Fun;
 import org.mortalis.quickinfo.utils.Vars;
 
@@ -31,6 +31,7 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
   
+  private FilePickerDialog filePickerDialog;
   private SectionsPagerAdapter sectionsPagerAdapter;
   
   private CustomViewPager viewPager;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
     
     context = this;
+    init();
     Fun.setContext(context);
     DatabaseManager.init(context);
     
@@ -112,6 +114,13 @@ public class MainActivity extends AppCompatActivity {
   }
   
   
+  // ---------------------------------------------------------------------
+  
+  private void init() {
+    filePickerDialog = new FilePickerDialog(context);
+    filePickerDialog.setExtensionFilter("db");
+  }
+  
   // ------------------------------ Actions ------------------------------
   
   public void exportDB() {
@@ -120,17 +129,9 @@ public class MainActivity extends AppCompatActivity {
   }
   
   public void importDB() {
-    new FileChooser(this, Vars.DEFAULT_APP_DATA_DIR_PATH).setFileListener(new FileSelectedListener() {
-      @Override
-      public void fileSelected(File file) {
-        if (file == null || !file.getName().endsWith(".db")) {
-          Fun.toast(context, "Must be a .db file");
-          return;
-        }
-        
-        Fun.importDB(file);
-        reloadPages();
-      }
+    filePickerDialog.setFileSelectedListener(file -> {
+      Fun.importDB(file);
+      reloadPages();
     }).showDialog();
   }
   

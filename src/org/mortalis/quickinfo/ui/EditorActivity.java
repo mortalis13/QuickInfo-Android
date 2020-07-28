@@ -2,13 +2,14 @@ package org.mortalis.quickinfo.ui;
 
 import java.io.File;
 
+import org.home.file_chooser_lib.FilePickerDialog;
+
 import org.mortalis.quickinfo.DatabaseManager;
 import org.mortalis.quickinfo.R;
-import org.mortalis.quickinfo.utils.FileChooser;
-import org.mortalis.quickinfo.utils.FileChooser.FileSelectedListener;
 import org.mortalis.quickinfo.utils.Fun;
 import org.mortalis.quickinfo.utils.Vars;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.TooltipCompat;
@@ -21,6 +22,10 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 public class EditorActivity extends AppCompatActivity {
+  
+  private FilePickerDialog filePickerDialog;
+  
+  private Context context;
   
   private ImageButton bBack;
   private ImageButton bSave;
@@ -38,9 +43,11 @@ public class EditorActivity extends AppCompatActivity {
     setContentView(R.layout.activity_editor);
     
     Fun.logd("onCreate");
+    context = this;
+    
+    init();
     
     etEditorText = findViewById(R.id.editor_text);
-    
     bBack = findViewById(R.id.bBack);
     bSave = findViewById(R.id.bSave);
     bImportText = findViewById(R.id.bImportText);
@@ -91,7 +98,14 @@ public class EditorActivity extends AppCompatActivity {
   }
   
   
-// ------------------------------------------------ Actions ------------------------------------------------
+// ------------------------------------------------------------------------------------------------
+  private void init() {
+    filePickerDialog = new FilePickerDialog(context);
+    filePickerDialog.setExtensionFilter("txt");
+  }
+  
+  
+// ------------------------------------------------ Actions ---------------------------------------
   
   private void loadContent() {
     Bundle extras = getIntent().getExtras();
@@ -164,14 +178,9 @@ public class EditorActivity extends AppCompatActivity {
   }
   
   public void importFileAction() {
-    new FileChooser(this).setFileListener(new FileSelectedListener() {
-      @Override
-      public void fileSelected(File file) {
-        String text = Fun.readFile(file);
-        if (text != null) etEditorText.setText(text);
-        
-        Fun.logd("finishReadFile");
-      }
+    filePickerDialog.setFileSelectedListener(file -> {
+      String text = Fun.readFile(file);
+      if (text != null) etEditorText.setText(text);
     }).showDialog();
   }
   
