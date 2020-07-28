@@ -10,6 +10,7 @@ import org.mortalis.quickinfo.model.NoteModel;
 import org.mortalis.quickinfo.ui.EditorActivity;
 import org.mortalis.quickinfo.ui.NoteViewActivity;
 import org.mortalis.quickinfo.utils.Vars;
+import org.mortalis.quickinfo.utils.Fun;
 
 import android.app.Activity;
 import android.content.Context;
@@ -42,7 +43,9 @@ public class NotesFragment extends PageFragment {
   
   private RecyclerView notesListView;
   private RecyclerView.Adapter notesAdapter;
-  private RecyclerView.LayoutManager layoutManager;
+  private LinearLayoutManager listLayoutManager;
+  
+  private int lastPos;
   
   private boolean infoUpdated = false;
   
@@ -64,17 +67,19 @@ public class NotesFragment extends PageFragment {
   
   @Override
   public void onCreate(Bundle savedInstanceState) {
+    Fun.logd("NotesFragment.onCreate()");
     super.onCreate(savedInstanceState);
     setHasOptionsMenu(true);
   }
   
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    Fun.logd("NotesFragment.onCreateView()");
     View rootView = inflater.inflate(R.layout.notes_view, container, false);
     notesListView = rootView.findViewById(R.id.notesList);
     
-    layoutManager = new LinearLayoutManager(context);
-    notesListView.setLayoutManager(layoutManager);
+    listLayoutManager = new LinearLayoutManager(context);
+    notesListView.setLayoutManager(listLayoutManager);
     
     loadData();
     infoUpdated = true;
@@ -84,8 +89,13 @@ public class NotesFragment extends PageFragment {
   
   @Override
   public void onResume() {
+    Fun.logd("NotesFragment.onResume()");
     loadData();
     infoUpdated = false;
+    
+    if (notesAdapter != null && listLayoutManager != null && lastPos < notesAdapter.getItemCount()) {
+      listLayoutManager.scrollToPositionWithOffset(lastPos, 0);
+    }
     
     super.onResume();
   }
@@ -188,6 +198,9 @@ public class NotesFragment extends PageFragment {
       View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.notes_list_item, parent, false);
       view.setOnClickListener(new OnClickListener() {
         public void onClick(View v) {
+          lastPos = listLayoutManager.findFirstCompletelyVisibleItemPosition();
+          Fun.log("lastPos: " + lastPos);
+          
           int itemPosition = notesListView.getChildLayoutPosition(v);
           NoteListItem item = items.get(itemPosition);
           int noteId = item.getId();
