@@ -21,6 +21,9 @@
   <color name="dialog_button_background_pressed">#ddd</color>
   <color name="dialog_button_background_default">@color/dialog_background</color>
   
+  <color name="note_item_background_pressed">#ddd</color>
+  <color name="note_item_background_default">#fff</color>
+  
   <color name="red">#ffff0000</color>
   <color name="green">#ff00ff00</color>
   <color name="blue">#ff0000ff</color>

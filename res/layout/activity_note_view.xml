@@ -59,9 +59,10 @@
   </RelativeLayout>
   
   <View
-      android:layout_width="match_parent"
-      android:layout_height="1dp"
-      android:background="#aaa"/>
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:background="#aaa"
+  />
   
   
   <ScrollView
