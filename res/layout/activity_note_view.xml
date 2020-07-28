@@ -71,14 +71,15 @@
     android:fillViewport="true" >
     
     <TextView
-        android:id="@+id/noteContent"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        android:padding="10dp"
-        android:textSize="20sp"
-        android:textColor="#222"
-        android:clickable="true"
+      android:id="@+id/noteContent"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="@color/white"
+      android:padding="10dp"
+      android:textSize="20sp"
+      android:textColor="#222"
+      android:clickable="true"
+      android:textIsSelectable="true"
     />
   </ScrollView>
           
