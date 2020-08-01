@@ -24,6 +24,10 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageButton;
+import android.view.View.OnClickListener;
+import android.view.View;
+
 
 public class MainActivity extends AppCompatActivity {
   
@@ -31,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
   
   private CustomViewPager viewPager;
   private TabLayout tabLayout;
+  private ImageButton bMenu;
   
   private Context context;
   
@@ -52,7 +57,8 @@ public class MainActivity extends AppCompatActivity {
     }
     
     viewPager = findViewById(R.id.viewPager);
-    tabLayout = findViewById(R.id.tabs);
+    tabLayout = findViewById(R.id.tabLayout);
+    bMenu = findViewById(R.id.bMenu);
     
     sectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
     viewPager.setAdapter(sectionsPagerAdapter);
@@ -74,6 +80,12 @@ public class MainActivity extends AppCompatActivity {
 
       public void onTabSelected(Tab tab) { }
       public void onTabUnselected(Tab tab) { }
+    });
+    
+    bMenu.setOnClickListener(new OnClickListener() {
+      public void onClick(View v) {
+        Fun.openMenu(v);
+      }
     });
   }
   

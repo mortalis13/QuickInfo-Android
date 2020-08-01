@@ -1,0 +1,3 @@
+- restore scroll pos on back in Notes
+- featured / frequent notes at the top
+- clear text button

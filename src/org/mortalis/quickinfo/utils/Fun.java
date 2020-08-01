@@ -20,6 +20,10 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.view.inputmethod.BaseInputConnection;
+import android.view.KeyEvent;
+import android.view.View;
+
 
 public class Fun {
   
@@ -197,6 +201,17 @@ public class Fun {
   }
   
   
+  //---------------------------------------------- Android Utils ----------------------------------------------
+  
+  public static void openMenu(View targetView) {
+    BaseInputConnection mInputConnection = new BaseInputConnection(targetView, true);
+    KeyEvent kd = new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_MENU);
+    KeyEvent ku = new KeyEvent(KeyEvent.ACTION_UP, KeyEvent.KEYCODE_MENU);
+    mInputConnection.sendKeyEvent(kd);
+    mInputConnection.sendKeyEvent(ku);
+  }
+  
+  
   //---------------------------------------------- Utils ----------------------------------------------
   
   public static void printBytes(byte[] bytes) {
@@ -346,9 +361,6 @@ public class Fun {
     try {
       File sd = Environment.getExternalStorageDirectory();
       File data = Environment.getDataDirectory();
-      
-      File dir = new File(sd + "/" + Vars.PROJECT_EXTERNAL_FOLDER);
-      if (!dir.exists()) dir.mkdir();
       
       if (sd.canWrite()) {
         String currentDBPath = "//data//" + Vars.PACKAGE_NAME + "//databases//" + Vars.DATABASE_NAME;

@@ -27,7 +27,7 @@
 
 
   <style name="AppTabLayout" parent="Widget.Design.TabLayout">
-    <item name="tabBackground">@drawable/tab_background</item>
+    <item name="tabBackground">@color/tab_background</item>
     <item name="tabTextAppearance">@style/AppTabTextAppearance</item>
     <item name="tabIndicatorHeight">4dp</item>
     <item name="tabSelectedTextColor">#222</item>

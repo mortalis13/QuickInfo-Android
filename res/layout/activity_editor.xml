@@ -39,6 +39,16 @@
     />
     
     <ImageButton
+      android:id="@+id/bImportText"
+      android:layout_width="@dimen/toolbar_button_width"
+      android:layout_height="match_parent"
+      android:src="@drawable/ic_file_download_black_24dp"
+      android:tint="#888"
+      android:background="@drawable/toolbar_button_background"
+      android:layout_toLeftOf="@+id/bSave"
+    />
+    
+    <ImageButton
       android:id="@+id/bSave"
       android:layout_width="@dimen/toolbar_button_width"
       android:layout_height="match_parent"
@@ -46,45 +56,35 @@
       android:src="@drawable/ic_save_black_24dp"
       android:tint="#888"
       android:background="@drawable/toolbar_button_background"
-      android:layout_toLeftOf="@+id/bImportText"
-    />
-    
-    <ImageButton
-      android:id="@+id/bImportText"
-      android:layout_width="@dimen/toolbar_button_width"
-      android:layout_height="match_parent"
-      android:src="@drawable/ic_file_download_black_24dp"
-      android:tint="#888"
-      android:background="@drawable/toolbar_button_background"
       android:layout_alignParentRight="true"
     />
   </RelativeLayout>
   
   <View
-      android:layout_width="match_parent"
-      android:layout_height="1dp"
-      android:background="#aaa"/>
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:background="#aaa"/>
       
       
   <ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true" >
+      
+    <EditText
+      android:id="@+id/editor_text"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:fillViewport="true" >
-      
-      <EditText
-          android:id="@+id/editor_text"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:background="@color/white"
-          android:gravity="top"
-          android:imeOptions="actionDone"
-          android:inputType="textCapSentences|textImeMultiLine|textMultiLine"
-          android:padding="10dp"
-          android:scrollbarAlwaysDrawVerticalTrack="true"
-          android:scrollbars="vertical"
-          android:textSize="20sp" >
-          <requestFocus />
-      </EditText>
+      android:background="@color/white"
+      android:gravity="top"
+      android:imeOptions="actionDone"
+      android:inputType="textCapSentences|textImeMultiLine|textMultiLine"
+      android:padding="10dp"
+      android:scrollbarAlwaysDrawVerticalTrack="true"
+      android:scrollbars="vertical"
+      android:textSize="20sp" >
+      <requestFocus />
+    </EditText>
   </ScrollView>
 
 </LinearLayout>

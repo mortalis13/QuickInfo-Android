@@ -23,9 +23,8 @@ public class NoteViewActivity extends AppCompatActivity {
   
   private ImageButton bBack;
   private ImageButton bDelete;
-  private ImageButton bEdit;
   
-  private TextView tvContent;
+  private TextView noteContent;
   
   private int noteId = -1;
   private boolean infoUpdated;
@@ -38,11 +37,10 @@ public class NoteViewActivity extends AppCompatActivity {
     
     Fun.logd("onCreate");
     
-    tvContent = findViewById(R.id.tvContent);
+    noteContent = findViewById(R.id.noteContent);
     
     bBack = findViewById(R.id.bBack);
     bDelete = findViewById(R.id.bDelete);
-    bEdit = findViewById(R.id.bEdit);
     
     bBack.setOnClickListener(new OnClickListener() {
       public void onClick(View v) {
@@ -56,14 +54,13 @@ public class NoteViewActivity extends AppCompatActivity {
       }
     });
     
-    bEdit.setOnClickListener(new OnClickListener() {
+    noteContent.setOnClickListener(new OnClickListener() {
       public void onClick(View v) {
         editAction();
       }
     });
     
     TooltipCompat.setTooltipText(bDelete, getString(R.string.button_tooltip_delete_note));
-    TooltipCompat.setTooltipText(bEdit, getString(R.string.button_tooltip_edit_note));
     
     loadContent();
   }
@@ -116,7 +113,7 @@ public class NoteViewActivity extends AppCompatActivity {
   
   public void loadInfo(String info) {
     Fun.logd("loadInfo");
-    tvContent.setText(info);
+    noteContent.setText(info);
   }
   
   public void editAction() {

@@ -14,13 +14,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 >
-
-<LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-<android.support.design.widget.TabLayout
-    android:id="@+id/tabLayout"
+  <android.support.design.widget.TabLayout
+    android:id="@+id/tabs"
     android:layout_width="match_parent"
     android:layout_height="50dp"
     android:layout_gravity="top"
@@ -28,39 +23,23 @@
     style="@style/AppTabLayout"
     android:stateListAnimator="@null"
   />
+  
+  <ImageButton
+    android:id="@+id/bMenu"
+    android:layout_width="50dp"
+    android:layout_height="50dp"
+    android:layout_gravity="top|end"
+    android:src="@drawable/ic_arrow_back_black_24dp"
+    android:tint="#888"
+    android:background="@drawable/toolbar_button_background"
+  />
+</FrameLayout>
+
 <org.mortalis.quickinfo.components.CustomViewPager
   android:id="@+id/viewPager"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   app:layout_behavior="@string/appbar_scrolling_view_behavior"
 />
-</LinearLayout>
 
-<LinearLayout
-  android:id="@+id/buttonPanel"
-  android:layout_width="wrap_content"
-  android:layout_height="50dp"
-  android:layout_gravity="top|end"
-  android:layout_marginEnd="0dp"
-  android:layout_marginRight="0dp"
-  android:orientation="horizontal"
->
-  <!-- <View
-    android:id="@+id/verticalDivider"
-    android:layout_width="1dp"
-    android:layout_height="match_parent"
-    android:layout_below="@+id/panelHeader"
-    android:background="#888"
-  /> -->
-  <ImageButton
-    android:id="@+id/bMenu"
-    android:layout_width="50dp"
-    android:layout_height="match_parent"
-    android:src="@drawable/ic_menu_black_24dp"
-    android:tint="#888"
-    android:background="@drawable/tabs_toolbar_button_background"
-  />
-</LinearLayout>
-
-</FrameLayout>
 </LinearLayout>
