@@ -42,6 +42,7 @@
       android:id="@+id/bImportText"
       android:layout_width="@dimen/toolbar_button_width"
       android:layout_height="match_parent"
+      android:paddingTop="2dp"
       android:layout_gravity="center_vertical"
       android:src="@drawable/ic_file_download_black_24dp"
       android:scaleType="center"
