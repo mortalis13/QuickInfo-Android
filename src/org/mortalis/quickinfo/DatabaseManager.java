@@ -24,6 +24,7 @@ public class DatabaseManager {
     if (db == null) {
       dbHelper = new DatabaseHelper(context);
       db = dbHelper.getWritableDatabase();
+      db.disableWriteAheadLogging();
     }
   }
   
