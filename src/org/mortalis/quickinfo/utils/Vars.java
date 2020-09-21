@@ -15,6 +15,8 @@ public class Vars {
   
   // ---
   
+  public static final int APP_PERMISSION_REQUEST_ACCESS_EXTERNAL_STORAGE = 101;
+  
   public static final String FRAGMENT_TAG_ARG = "tag";
   public static final String DATABASE_NAME = "info.db";
   

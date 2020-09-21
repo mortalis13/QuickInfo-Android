@@ -75,6 +75,7 @@ public class InfoFragment extends PageFragment {
   
   @Override
   public void onResume() {
+    Fun.log("..onResume()");
     Fun.logd("InfoFragment.onResume()");
     
     loadData();
@@ -85,6 +86,7 @@ public class InfoFragment extends PageFragment {
   
   @Override
   public void onAttach(Activity activity) {
+    Fun.log("..onAttach()");
     super.onAttach(activity);
     if (activity == null) return;
     this.context = activity;
@@ -93,6 +95,7 @@ public class InfoFragment extends PageFragment {
   
   @Override
   public void onAttach(Context context) {
+    Fun.log("..onAttach()");
     super.onAttach(context);
     if (context == null) return;
     this.context = context;
@@ -100,6 +103,7 @@ public class InfoFragment extends PageFragment {
   
   @Override
   public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    Fun.log("..onCreateOptionsMenu()");
     // inflater.inflate(R.menu.plain_info, menu);
     super.onCreateOptionsMenu(menu, inflater);
   }

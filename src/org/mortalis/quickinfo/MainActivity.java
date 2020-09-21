@@ -27,6 +27,12 @@ import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.view.View.OnClickListener;
 import android.view.View;
+import android.widget.PopupMenu;
+
+import android.support.v4.content.ContextCompat;
+import android.support.annotation.NonNull;
+import android.Manifest;
+import android.content.pm.PackageManager;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -38,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
   private TabLayout tabLayout;
   private ImageButton bMenu;
   
+  private PopupMenu menuPopup;
+  
   private Context context;
   
   
@@ -48,11 +56,11 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
     
     context = this;
+    requestAppPermissions(context);
+    
     init();
     Fun.setContext(context);
     DatabaseManager.init(context);
-    
-    Fun.createFolder(Vars.DEFAULT_APP_DATA_DIR_PATH);
     
     FragmentManager fm = getSupportFragmentManager();
     for (Fragment fragment: fm.getFragments()) {
@@ -87,7 +95,9 @@ public class MainActivity extends AppCompatActivity {
     
     bMenu.setOnClickListener(new OnClickListener() {
       public void onClick(View v) {
-        Fun.openMenu(v);
+        if (menuPopup == null) createMainMenu(v);
+        onPrepareOptionsMenu(menuPopup.getMenu());
+        menuPopup.show();
       }
     });
   }
@@ -116,10 +126,40 @@ public class MainActivity extends AppCompatActivity {
   
   
   // ---------------------------------------------------------------------
+  private void requestAppPermissions(Context context) {
+    boolean isReadGranted  = ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE)  == PackageManager.PERMISSION_GRANTED;
+    boolean isWriteGranted = ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
+    if (isReadGranted && isWriteGranted) return;
+    
+    requestPermissions(new String[] {
+      Manifest.permission.READ_EXTERNAL_STORAGE,
+      Manifest.permission.WRITE_EXTERNAL_STORAGE
+    }, Vars.APP_PERMISSION_REQUEST_ACCESS_EXTERNAL_STORAGE);
+  }
   
+  @Override
+  public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    if (requestCode == Vars.APP_PERMISSION_REQUEST_ACCESS_EXTERNAL_STORAGE && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+      initAfterPermissions();
+    }
+  }
+  
+  private void initAfterPermissions() {
+    Fun.createFolder(Vars.DEFAULT_APP_DATA_DIR_PATH);
+  }
+
   private void init() {
     filePickerDialog = new FilePickerDialog(context);
     filePickerDialog.setExtensionFilter("db");
+  }
+  
+  private void createMainMenu(View v) {
+    menuPopup = new PopupMenu(context, v);
+    menuPopup.setOnMenuItemClickListener(item -> {
+      return onOptionsItemSelected(item);
+    });
+    menuPopup.inflate(R.menu.menu_main);
   }
   
   // ------------------------------ Actions ------------------------------
@@ -133,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
     filePickerDialog.setFileSelectedListener(file -> {
       Fun.importDB(file);
       reloadPages();
-    }).showDialog();
+    }).showDialog(Vars.DEFAULT_APP_DATA_DIR_PATH);
   }
   
   private void reloadPages() {
