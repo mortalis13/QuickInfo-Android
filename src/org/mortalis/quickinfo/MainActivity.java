@@ -127,12 +127,10 @@ public class MainActivity extends AppCompatActivity {
   
   // ---------------------------------------------------------------------
   private void requestAppPermissions(Context context) {
-    boolean isReadGranted  = ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE)  == PackageManager.PERMISSION_GRANTED;
     boolean isWriteGranted = ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
-    if (isReadGranted && isWriteGranted) return;
+    if (isWriteGranted) return;
     
     requestPermissions(new String[] {
-      Manifest.permission.READ_EXTERNAL_STORAGE,
       Manifest.permission.WRITE_EXTERNAL_STORAGE
     }, Vars.APP_PERMISSION_REQUEST_ACCESS_EXTERNAL_STORAGE);
   }
