@@ -7,7 +7,7 @@ Provides quick access to frequently used information.
 
 ## Notes
 
-- DB is exported to "sdcard/QuickInfo" folder with "info.db" name
+- DB is exported to "sdcard/QuickInfo" folder with **"info.db"** name
 - the exported DB can be viewed and edited with any SQLite editor (like [SQLite Viewer](https://play.google.com/store/apps/details?id=com.kokufu.android.apps.sqliteviewer.free) app)
 
 ## Download
@@ -16,6 +16,16 @@ Provides quick access to frequently used information.
 
 
 ## Changelog
+
+### 1.0.7
+
+- adaptations for different screens & APIs
+
+### 1.0.5
+
+-selectable text for TextView's
+-restore list position on return
+-updated file picker library
 
 ### 1.0.3
 
