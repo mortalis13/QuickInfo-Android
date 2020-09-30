@@ -23,9 +23,9 @@ Provides quick access to frequently used information.
 
 ### 1.0.5
 
--selectable text for TextView's
--restore list position on return
--updated file picker library
+- selectable text for TextView's
+- restore list position on return
+- updated file picker library
 
 ### 1.0.3
 
