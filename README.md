@@ -17,6 +17,11 @@ Provides quick access to frequently used information.
 
 ## Changelog
 
+### 1.0.8
+
+- added DB name to the Export toast
+- reduced font size for the dialog title
+
 ### 1.0.7
 
 - adaptations for different screens & APIs
