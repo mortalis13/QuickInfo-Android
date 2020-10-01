@@ -19,7 +19,7 @@
       android:gravity="center"
       android:text="Delete Note?"
       android:textColor="#666"
-      android:textSize="24sp"
+      android:textSize="22sp"
       android:layout_alignParentLeft="true"
       android:layout_alignParentTop="true"
     />

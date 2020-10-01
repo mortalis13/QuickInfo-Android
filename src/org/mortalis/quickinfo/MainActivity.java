@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
   
   public void exportDB() {
     Fun.exportDB();
-    Fun.toast(context, "DB exported to: \"" + Vars.DEFAULT_APP_DATA_DIR_PATH + "\"");
+    Fun.toast(context, "DB exported to: \"" + Vars.DEFAULT_APP_DATA_DIR_PATH + "/" + Vars.DATABASE_NAME + "\"");
   }
   
   public void importDB() {
