@@ -17,6 +17,10 @@ Provides quick access to frequently used information.
 
 ## Changelog
 
+### 1.0.9
+
+- auto-detection for links in TextView's
+
 ### 1.0.8
 
 - added DB name to the Export toast
