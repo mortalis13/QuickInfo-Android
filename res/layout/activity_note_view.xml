@@ -80,6 +80,7 @@
       android:textColor="#222"
       android:clickable="true"
       android:textIsSelectable="true"
+      android:autoLink="web|email|phone|all"
     />
   </ScrollView>
           

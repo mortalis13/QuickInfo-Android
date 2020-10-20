@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.View.OnClickListener;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +29,7 @@ public class QuickNoteFragment extends PageFragment {
   private Activity activity;
   
   private WebView wvContent;
-  private TextView tvContent;
+  private TextView noteContent;
   
   private View rootView;
   
@@ -48,7 +49,13 @@ public class QuickNoteFragment extends PageFragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     rootView = inflater.inflate(R.layout.quicknote_view, container, false);
     
-    tvContent = (TextView) rootView.findViewById(R.id.tvContent);
+    noteContent = (TextView) rootView.findViewById(R.id.noteContent);
+    
+    // noteContent.setOnClickListener(new OnClickListener() {
+    //   public void onClick(View v) {
+    //     editAction();
+    //   }
+    // });
     
     loadData();
     infoUpdated = true;
@@ -118,7 +125,7 @@ public class QuickNoteFragment extends PageFragment {
   
   
   public void loadInfo(String info) {
-    tvContent.setText(info);
+    noteContent.setText(info);
   }
   
   public void editAction() {
