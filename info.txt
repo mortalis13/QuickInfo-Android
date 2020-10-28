@@ -1,3 +1,6 @@
+keytool -genkey -v -keystore quickinfo-release-key.jks -alias quickinfo-alias -keyalg RSA -keysize 2048 -validity 10000
+
+
 - restore scroll pos on back in Notes
 - featured / frequent notes at the top
 - clear text button
