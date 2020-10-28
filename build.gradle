@@ -35,7 +35,7 @@ android {
     applicationId "org.mortalis.quickinfo"
     vectorDrawables.useSupportLibrary = true
     
-    versionCode 109
+    versionCode 110
     versionName String.format('%d.%d.%d', (int)(versionCode/10/10), (int)(versionCode/10)%10, versionCode%10)
     
     minSdkVersion 16
