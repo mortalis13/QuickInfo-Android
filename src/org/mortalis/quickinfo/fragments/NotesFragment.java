@@ -50,15 +50,8 @@ public class NotesFragment extends PageFragment {
   private boolean infoUpdated = false;
   
   
-  public NotesFragment() {
-  }
-  
-  public NotesFragment(Context context) {
-    this.context = context;
-  }
-  
   public static NotesFragment newInstance(Context context) {
-    NotesFragment fragment = new NotesFragment(context);
+    NotesFragment fragment = new NotesFragment();
     Bundle args = new Bundle();
     args.putString(Vars.FRAGMENT_TAG_ARG, FRAGMENT_TAG);
     fragment.setArguments(args);
