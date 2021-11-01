@@ -1,0 +1,6 @@
+Quick Info
+Provides quick access to frequently used information
+The app has 3 tabs:
+- Info - for storing personal information (like name, phone, email) allowing to copy text on click
+- Notes - allows to add a list of text notes
+- Quick Note - has one text note for temporary text
